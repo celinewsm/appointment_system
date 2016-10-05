@@ -1,0 +1,17 @@
+<%= form_for :user do |f| %>
+<div class="field">
+  <%= f.label :email %>
+  <%= f.email_field :email, placeholder: "Enter your email" %>
+</div>
+<div class="field">
+  <%= f.label :password %>
+  <%= f.password_field :password, placeholder: "Enter your password" %>
+</div>
+<div class="field">
+  <%= f.label :confirm_password %>
+  <%= f.password_field :password_confirmation, placeholder: "Confirm password" %>
+</div>
+<div class="actions">
+  <%= f.submit "Login" %>
+</div>
+<% end %>

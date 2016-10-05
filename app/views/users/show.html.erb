@@ -1,0 +1,23 @@
+<strong>Account of <%= @current_user.email %>,</strong>
+
+<p>You have:</p>
+
+<% if @user_appoints.length === 0 %>
+<p>
+  No appointments made. <a href="/appoints/new">Make an appointment now.</a>
+</p>
+<% else %>
+  <ul>
+    <% @user_appoints.each do |appoint| %>
+      <li>
+        Appointment on <%= appoint.date.to_s[0,4] %>/<%= appoint.date.to_s[4,2] %>/<%= appoint.date.to_s[5,2] %> at <%= appoint.time_slot %> with <%= appoint.doctor.name %>
+        <%= link_to 'Change', edit_appoint_path(appoint.id) %>
+        <%= link_to 'Cancel', appoint, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+
+<a href="../">Back</a>

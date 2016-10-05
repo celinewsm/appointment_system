@@ -1,0 +1,32 @@
+<h1>Editing Doctor</h1>
+
+<%= form_for @doctor, url: user_path, method: :patch do |f| %>
+  <% if @doctor.errors.any? %>
+    <div id="error_explanation">
+      <h3><%= pluralize(@doctor.errors.count, "error") %> prohibited this website from being saved:</h3>
+
+      <ul>
+      <% @doctor.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.name_field :name, :required => true %>
+  </div>
+  <div class="field">
+    <%= f.label :speciality %>
+    <%= f.speciality_field :speciality %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>
+
+<%= render 'form', doctor: @doctor %>
+
+<%= link_to 'Show', @doctor %> |
+<%= link_to 'Back', doctors_path %>

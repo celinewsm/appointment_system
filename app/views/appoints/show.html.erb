@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Doctor:</strong>
+  <%= @appoint.doctor_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @appoint.user_id %>
+</p>
+
+<p>
+  <strong>Complaint:</strong>
+  <%= @appoint.complaint %>
+</p>
+
+<p>
+  <strong>Speciality:</strong>
+  <%= @appoint.speciality %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @appoint.date %>
+</p>
+
+<p>
+  <strong>Time slot:</strong>
+  <%= @appoint.time_slot %>
+</p>
+
+<%= link_to 'Edit', edit_appoint_path(@appoint) %> |
+<%= link_to 'Back', appoints_path %>

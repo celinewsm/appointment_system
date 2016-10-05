@@ -1,0 +1,47 @@
+<%= form_for(appoint) do |f| %>
+  <% if appoint.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(appoint.errors.count, "error") %> prohibited this appoint from being saved:</h2>
+
+      <ul>
+      <% appoint.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :doctor_id %>
+    <%= f.number_field :doctor_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :user_id %>
+    <%= f.number_field :user_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :complaint %>
+    <%= f.text_area :complaint %>
+  </div>
+
+  <div class="field">
+    <%= f.label :speciality %>
+    <%= f.text_field :speciality %>
+  </div>
+
+  <div class="field">
+    <%= f.label :date %>
+    <%= f.number_field :date %>
+  </div>
+
+  <div class="field">
+    <%= f.label :time_slot %>
+    <%= f.number_field :time_slot %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
