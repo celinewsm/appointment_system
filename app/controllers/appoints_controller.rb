@@ -15,6 +15,14 @@ class AppointsController < ApplicationController
   # GET /appoints/new
   def new
     @appoint = Appoint.new
+    # puts ">>>Checking @appoint : #{@appoint.inspect}"
+
+    # @doctors = Doctor.all
+    @appoints = Appoint.all
+    puts ">>>Checking @appoints : #{@appoints.inspect}"
+    puts ">>>Checking @appoints[0].doctor.name: #{@appoints[0].doctor.name}"
+
+
   end
 
   # GET /appoints/1/edit

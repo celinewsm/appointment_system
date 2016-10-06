@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :doctor_id %>
-    <%= f.number_field :doctor_id %>
+    <%= f.select :doctor_id, Doctor.all.collect {|x| [x.name, x.id]} %>
   </div>
 
   <div class="field">
