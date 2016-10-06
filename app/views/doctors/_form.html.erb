@@ -1,27 +1,16 @@
 <%= form_for(doctor) do |f| %>
-  <% if doctor.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(doctor.errors.count, "error") %> prohibited this doctor from being saved:</h2>
-
-      <ul>
-      <% doctor.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div class="field">
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, placeholder: "Enter your name" %>
   </div>
 
   <div class="field">
     <%= f.label :speciality %>
-    <%= f.text_field :speciality %>
+    <%= f.text_field :speciality, placeholder: "Enter your speciality" %>
   </div>
 
   <div class="actions">
     <%= f.submit %>
   </div>
+
 <% end %>
