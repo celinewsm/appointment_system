@@ -1,0 +1,32 @@
+<h1>//Doctor's unavailability// admin only</h1>
+
+<%= form_for @appoint, :url => appoints_path, :html => { :method => :post } do |f| %>
+<div class="field">
+  <%= f.label :speciality %>
+  <%= f.select :speciality, Doctor.all.collect {|x| [x.speciality,x.speciality]}, { include_blank: 'Please select one' } %>
+</div>
+
+<div class="field">
+  <%= f.label :doctor %>
+  <%= f.select :doctor_id, Doctor.all.reorder('name ASC').collect {|x| [x.name,x.id,{:class => "toggle_doctors hidden #{x.speciality}"}]}, { include_blank: 'Select Speciality' } %>
+</div>
+
+<div class="field">
+  <%= f.label :date %>
+  <%= f.text_field :date, placeholder: "YYYYMMMDD" %>
+</div>
+
+<div class="field">
+  <%= f.label :Time %>
+  <%= f.select :time_slot, [8,9,10,11,12,13,14,15,16,17,18,19,20].collect {|x| [x.to_s+":00 - "+(x+1).to_s+":00",x]}, { include_blank: 'Select Time' } %>
+</div>
+
+
+<div class="actions">
+  <%= f.submit %>
+</div>
+<% end %>
+
+<input type="hidden" name="appoint[user_id]" value="<%=@current_user.id%>">
+
+<%= link_to 'Back to dashboard', profile_url %>

@@ -1,5 +1,7 @@
 class AppointsController < ApplicationController
   before_action :set_appoint, only: [:show, :edit, :update, :destroy]
+  before_action  :is_admin, only: [:index]
+  before_action  :is_owner_or_admin, only: [:edit,:update,:destroy]
 
   # GET /appoints
   # GET /appoints.json
@@ -15,6 +17,7 @@ class AppointsController < ApplicationController
   # GET /appoints/new
   def new
     @appoint = Appoint.new
+
   end
 
   # GET /appoints/1/edit
@@ -24,6 +27,7 @@ class AppointsController < ApplicationController
   # POST /appoints
   # POST /appoints.json
   def create
+    puts ">>>appoint_params: #{appoint_params.inspect}"
     @appoint = Appoint.new(appoint_params)
 
     respond_to do |format|
@@ -57,7 +61,6 @@ class AppointsController < ApplicationController
     @appoint.destroy
     respond_to do |format|
       format.html { redirect_to appoints_url, notice: 'Appoint was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
@@ -71,4 +74,5 @@ class AppointsController < ApplicationController
     def appoint_params
       params.require(:appoint).permit(:doctor_id, :user_id, :complaint, :speciality, :date, :time_slot)
     end
+
 end

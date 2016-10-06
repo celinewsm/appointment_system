@@ -12,13 +12,13 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :doctor_id %>
-    <%= f.number_field :doctor_id %>
+    <%= f.label :speciality %>
+    <%= f.select :speciality, Doctor.all.collect {|x| [x.speciality,x.speciality]}, { include_blank: 'Please select one' } %>
   </div>
 
   <div class="field">
-    <%= f.label :user_id %>
-    <%= f.number_field :user_id %>
+    <%= f.label :doctor %>
+    <%= f.select :doctor_id, Doctor.all.reorder('name ASC').collect {|x| [x.name,x.id,{:class => "toggle_doctors hidden #{x.speciality}"}]}, { include_blank: 'Select Doctor' } %>
   </div>
 
   <div class="field">
@@ -27,21 +27,18 @@
   </div>
 
   <div class="field">
-    <%= f.label :speciality %>
-    <%= f.text_field :speciality %>
-  </div>
-
-  <div class="field">
     <%= f.label :date %>
-    <%= f.number_field :date %>
+    <%= f.number_field :date, placeholder: 'YYYYMMDD' %>
   </div>
 
   <div class="field">
-    <%= f.label :time_slot %>
-    <%= f.number_field :time_slot %>
+    <%= f.label :Time %>
+    <%= f.select :time_slot, [8,9,10,11,12,13,14,15,16,17,18,19,20].collect {|x| [x.to_s+":00 - "+(x+1).to_s+":00",x]}, { include_blank: 'Select Time' } %>
   </div>
 
   <div class="actions">
     <%= f.submit %>
   </div>
+
+  <input type="hidden" name="appoint[user_id]" value="<%=@current_user.id%>">
 <% end %>

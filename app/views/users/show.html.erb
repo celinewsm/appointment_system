@@ -10,7 +10,8 @@
   <ul>
     <% @user_appoints.each do |appoint| %>
       <li>
-        Appointment on <%= appoint.date.to_s[0,4] %>/<%= appoint.date.to_s[4,2] %>/<%= appoint.date.to_s[5,2] %> at <%= appoint.time_slot %> with <%= appoint.doctor.name %>
+        Appointment on <%= appoint.date.to_s[0,4] %>/<%= appoint.date.to_s[4,2] %>/<%= appoint.date.to_s[5,2] %> at <%= appoint.time_slot %>:00-<%= appoint.time_slot+1 %>:00 with <%= appoint.doctor.name %>
+        <%= link_to 'View', appoint_path(appoint.id) %>
         <%= link_to 'Change', edit_appoint_path(appoint.id) %>
         <%= link_to 'Cancel', appoint, method: :delete, data: { confirm: 'Are you sure?' } %>
       </li>
@@ -18,5 +19,12 @@
   </ul>
 <% end %>
 
-<%= link_to 'New Appoint', new_appoint_path %>
-<a href="../">Back</a>
+<% if @current_user.account == 'admin' %>
+<strong>Admin controls:</strong>
+<%= link_to 'New Availability', new_availability_path %> |
+<%= link_to 'Master schedule', appoints_path %>
+<% end %>
+
+<br><br>
+<%= link_to 'New Appointment', new_appoint_path %>
+<%= link_to 'Log out', logout_path, method: :delete %>

@@ -13,4 +13,19 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by_id(session[:user_id])
   end
 
+  def is_admin
+    unless current_user.account == 'admin'
+      flash[:danger] = "No Admin Access!"
+      redirect_to profile_path
+    end
+  end
+
+  def is_owner_or_admin
+    unless current_user.account == 'admin' || current_user.id == @appoint.user_id
+      flash[:danger] = "No Admin Access Or Owner!"
+      redirect_to profile_path
+    end
+  end
+
+
 end
