@@ -5,7 +5,7 @@ class Appoint < ApplicationRecord
   before_save :availability_default
 
   def availability_default
-    self.complaint = "unavailable"
+    self.complaint ||= "unavailable"
   end
 
 end
