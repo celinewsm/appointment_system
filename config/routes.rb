@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :doctors, :appoints
+
+  resources :doctors, :appoints, :availability
 
   get "login" => "sessions#new"
   post "login" => "sessions#create"
