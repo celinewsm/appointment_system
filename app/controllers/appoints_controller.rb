@@ -15,6 +15,26 @@ class AppointsController < ApplicationController
   # GET /appoints/new
   def new
     @appoint = Appoint.new
+
+    @appoints = Appoint.all
+    n = @appoints.length
+    puts ">>>Checking @appoints #{@appoints.inspect}"
+    puts ">>>Checking appoints length:  #{n}"
+
+    @time_slots = [8,9,10,11,12,13,14,15,16,17,18,19,20] #opening hours from 0800 to 2000
+
+    t = @time_slots.length
+
+    for x in 0...n do
+      for y in 0...t do
+        if @appoints[x].time_slot == @time_slots[y]
+          @time_slots.delete(@appoints[x].time_slot)
+        end #end if
+      end #end inner for
+    end #end outer for
+
+    #puts ">>>Checking mod @time_slots: #{@time_slots}"
+
   end
 
   # GET /appoints/1/edit

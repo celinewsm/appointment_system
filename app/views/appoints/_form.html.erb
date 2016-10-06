@@ -11,14 +11,14 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :doctor_id %>
-    <%= f.number_field :doctor_id %>
-  </div>
+    <div class="field">
+      <%= label_tag :doctor_speciality %>
+      <%= select_tag :doctor_speciality, options_from_collection_for_select( Doctor.all.collect, :speciality, :speciality) %>
+    </div>
 
   <div class="field">
-    <%= f.label :user_id %>
-    <%= f.number_field :user_id %>
+    <%= f.label :doctor_name %>
+    <%= f.select :doctor_id, Doctor.all.collect {|x| [x.name, x.id, {'data-speciality'=>x.speciality} ]} %>
   </div>
 
   <div class="field">
@@ -26,10 +26,6 @@
     <%= f.text_area :complaint %>
   </div>
 
-  <div class="field">
-    <%= f.label :speciality %>
-    <%= f.text_field :speciality %>
-  </div>
 
   <div class="field">
     <%= f.label :date %>
@@ -37,8 +33,8 @@
   </div>
 
   <div class="field">
-    <%= f.label :time_slot %>
-    <%= f.number_field :time_slot %>
+    <%= label_tag :time_slot %>
+    <%= select_tag :time_slots, options_for_select(@time_slots, selected = nil) %>
   </div>
 
   <div class="actions">
