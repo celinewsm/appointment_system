@@ -1,8 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Doctor:</strong>
-  <%= @appoint.doctor_id %>
+  <strong>Date:</strong>
+  <%= @appoint.date %>
+</p>
+
+<p>
+  <strong>Time slot:</strong>
+  <%= @appoint.time_slot %>
 </p>
 
 <p>
@@ -11,8 +16,8 @@
 </p>
 
 <p>
-  <strong>Complaint:</strong>
-  <%= @appoint.complaint %>
+  <strong>Doctor:</strong>
+  <%= @appoint.doctor_id %>
 </p>
 
 <p>
@@ -21,13 +26,8 @@
 </p>
 
 <p>
-  <strong>Date:</strong>
-  <%= @appoint.date %>
-</p>
-
-<p>
-  <strong>Time slot:</strong>
-  <%= @appoint.time_slot %>
+  <strong>complaint:</strong>
+  <%= @appoint.complaint %>
 </p>
 
 <%= link_to 'Edit', edit_appoint_path(@appoint) %> |
