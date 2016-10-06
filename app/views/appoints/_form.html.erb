@@ -12,8 +12,8 @@
   <% end %>
 
     <div class="field">
-      <%= label_tag :doctor_speciality %>
-      <%= select_tag :doctor_speciality, options_from_collection_for_select( Doctor.all.collect, :speciality, :speciality) %>
+      <%= f.label :Speciality %>
+      <%= f.select :speciality, Doctor.all.collect {|x| [x.speciality,x.speciality]}, { include_blank: 'Please select one' } %>
     </div>
 
   <div class="field">
@@ -26,15 +26,14 @@
     <%= f.text_area :complaint %>
   </div>
 
-
   <div class="field">
     <%= f.label :date %>
-    <%= f.number_field :date %>
+    <%= f.number_field :date, placeholder: 'YYYYMMDD' %>
   </div>
 
   <div class="field">
-    <%= label_tag :time_slot %>
-    <%= select_tag :time_slots, options_for_select(@time_slots, selected = nil) %>
+    <%= f.label :Time %>
+    <%= f.select :time_slot, [8,9,10,11,12,13,14,15,16,17,18,19,20].collect {|x| [x.to_s+":00 - "+(x+1).to_s+":00",x]}, { include_blank: 'Select Time' } %>
   </div>
 
   <div class="actions">

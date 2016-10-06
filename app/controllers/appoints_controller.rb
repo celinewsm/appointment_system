@@ -44,6 +44,7 @@ class AppointsController < ApplicationController
   # POST /appoints
   # POST /appoints.json
   def create
+    puts ">>>appoint_params: #{appoint_params.inspect}"
     @appoint = Appoint.new(appoint_params)
 
     respond_to do |format|
