@@ -1,8 +1,8 @@
 <h1>Availability#new</h1>
 
-<h1>//Doctor busy//</h1
+<h1>//Doctor busy// admin only</h1>
 
-<%= form_for @appoint do |f| %>
+<%= form_for @appoint, :url => appoints_path, :html => { :method => :post } do |f| %>
 <div class="field">
   <%= f.label :speciality %>
   <%= f.select :speciality, Doctor.all.collect {|x| [x.speciality,x.speciality]}, { include_blank: 'Please select one' } %>
@@ -15,20 +15,20 @@
 
 <div class="field">
   <%= f.label :date %>
-  <%= f.date_field :date, placeholder: "YYYYMMMDD" %>
+  <%= f.text_field :date, placeholder: "YYYYMMMDD" %>
 </div>
 
+<input type="hidden" name="appoint[user_id]" value="<%=@current_user.id%>">
+
 <div class="field">
-  <label for="appoint_time_slot">Time slot</label>
-  <select name="appoint[time_slot]" id="appoint_time_slot">
-    <option value="" disabled selected>Input date</option>
-  </select>
+  <%= f.label :Time %>
+  <%= f.select :time_slot, [8,9,10,11,12,13,14,15,16,17,18,19,20].collect {|x| [x.to_s+":00 - "+(x+1).to_s+":00",x]}, { include_blank: 'Select Time' } %>
 </div>
 
 
 <div class="actions">
-  <%= f.submit "Login" %>
+  <%= f.submit %>
 </div>
 <% end %>
 
-<%= link_to 'Back', './' %>
+<%= link_to 'Back to dashboard', profile_url %>
