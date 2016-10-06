@@ -24,7 +24,7 @@ class User < ApplicationRecord
 
 
   def type_admin_default
-    self.account = "patient"
+    self.account ||= "patient"
   end
 
 
