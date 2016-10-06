@@ -5,4 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Doctor.create([{name: 'Dr. Strange', speciality: 'Magic' }, {name: 'Dr. Seuss', speciality: 'Hats'}])
+
+
+doctors = Doctor.create([{name: 'Dr. Strange', speciality: 'Magic' }, {name: 'Dr. Seuss', speciality: 'Hats'}])
+
+# Appoint.create([{doctor_id: doctor.first, user_id: '1', complaint:'Some complaints', speciality:'Magic', date: '20161005', time_slot: '1'}, {doctor_id: '2', user_id: '2', complaint:'Some complaints', speciality:'Hats', date: '20161005', time_slot: '7'}])

@@ -1,5 +1,5 @@
 class AvailabilityController < ApplicationController
-  before_action :set_appoint, only: [:show, :edit, :update, :destroy]
+  before_action  :is_admin, only: [:new]
 
   def new
     @appoint = Appoint.new
