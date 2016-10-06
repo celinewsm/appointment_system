@@ -20,5 +20,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def is_owner_or_admin
+    unless current_user.account == 'admin' || current_user.id == @appoint.user_id
+      flash[:danger] = "No Admin Access Or Owner!"
+      redirect_to profile_path
+    end
+  end
+
 
 end

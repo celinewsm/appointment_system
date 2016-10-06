@@ -1,7 +1,7 @@
 class AppointsController < ApplicationController
   before_action :set_appoint, only: [:show, :edit, :update, :destroy]
   before_action  :is_admin, only: [:index]
-
+  before_action  :is_owner_or_admin, only: [:edit,:update,:destroy]
 
   # GET /appoints
   # GET /appoints.json
