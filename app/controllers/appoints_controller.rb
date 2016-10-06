@@ -15,13 +15,6 @@ class AppointsController < ApplicationController
   # GET /appoints/new
   def new
     @appoint = Appoint.new
-    # puts ">>>Checking @appoint : #{@appoint.inspect}"
-
-    # @doctors = Doctor.all
-    @appoints = Appoint.all
-    puts ">>>Checking @appoints : #{@appoints.inspect}"
-    puts ">>>Checking @appoints[0].doctor.name: #{@appoints[0].doctor.name}"
-
 
   end
 
@@ -32,6 +25,7 @@ class AppointsController < ApplicationController
   # POST /appoints
   # POST /appoints.json
   def create
+    puts ">>>appoint_params: #{appoint_params.inspect}"
     @appoint = Appoint.new(appoint_params)
 
     respond_to do |format|
@@ -65,7 +59,6 @@ class AppointsController < ApplicationController
     @appoint.destroy
     respond_to do |format|
       format.html { redirect_to appoints_url, notice: 'Appoint was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 

@@ -11,7 +11,5 @@ Rails.application.routes.draw do
   post "signup" => "users#create"
   delete "delete/:id" => "users#destroy"
 
-  root "appoints#new" # Jon: For development purposes
-
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
