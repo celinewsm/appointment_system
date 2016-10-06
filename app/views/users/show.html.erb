@@ -19,6 +19,12 @@
   </ul>
 <% end %>
 
+<% if @current_user.account == 'admin' %>
+<strong>Admin controls:</strong>
+<%= link_to 'New Availability', new_availability_path %> |
+<%= link_to 'Master schedule', appoints_path %>
+<% end %>
 
+<br><br>
 <%= link_to 'New Appointment', new_appoint_path %>
 <%= link_to 'Log out', logout_path, method: :delete %>
