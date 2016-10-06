@@ -1,24 +1,5 @@
 <h1>Add Doctor</h1>
 
-<%= form_for @doctor, url: signup_path do |f| %>
-  <% if @doctor.errors.any? %>
-    <div id="error_explanation">
-      <h3><%= pluralize(@doctor.errors.count, "error") %> prohibited this website from being saved:</h3>
-
-      <ul>
-      <% @doctor.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  "Name:" <%= f.name_field :name, placeholder: %>
-  "speciality:"<%= f.speciality_field :speciality, placeholder: %>
-  <%= f.submit "index" %>
-<% end %>
-<!--
-
-
 <%= render 'form', doctor: @doctor %>
 
-<%= link_to 'Back', doctors_path %> -->
+<%= link_to 'Back', doctors_path %>
