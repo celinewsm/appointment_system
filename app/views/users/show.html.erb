@@ -11,6 +11,7 @@
     <% @user_appoints.each do |appoint| %>
       <li>
         Appointment on <%= appoint.date.to_s[0,4] %>/<%= appoint.date.to_s[4,2] %>/<%= appoint.date.to_s[5,2] %> at <%= appoint.time_slot %> with <%= appoint.doctor.name %>
+        <%= link_to 'View', appoint_path(appoint.id) %>
         <%= link_to 'Change', edit_appoint_path(appoint.id) %>
         <%= link_to 'Cancel', appoint, method: :delete, data: { confirm: 'Are you sure?' } %>
       </li>
@@ -19,5 +20,5 @@
 <% end %>
 
 
-
+<%= link_to 'Log out', logout_path, method: :delete %>
 <a href="../">Back</a>

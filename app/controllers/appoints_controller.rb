@@ -71,4 +71,5 @@ class AppointsController < ApplicationController
     def appoint_params
       params.require(:appoint).permit(:doctor_id, :user_id, :complaint, :speciality, :date, :time_slot)
     end
+
 end

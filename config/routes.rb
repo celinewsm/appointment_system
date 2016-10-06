@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
   resources :doctors, :appoints, :availability
 
+  root 'users#show'
+  # get "/" => redirect("login")
+
   get "login" => "sessions#new"
   post "login" => "sessions#create"
   delete "logout" => "sessions#destroy"

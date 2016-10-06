@@ -2,12 +2,7 @@
 
 <p>
   <strong>Doctor:</strong>
-  <%= @appoint.doctor_id %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @appoint.user_id %>
+  <%= @appoint.doctor.name %>
 </p>
 
 <p>
@@ -26,9 +21,9 @@
 </p>
 
 <p>
-  <strong>Time slot:</strong>
+  <strong>Time:</strong>
   <%= @appoint.time_slot %>
 </p>
 
 <%= link_to 'Edit', edit_appoint_path(@appoint) %> |
-<%= link_to 'Back', appoints_path %>
+<%= link_to 'Back', profile_path %>
