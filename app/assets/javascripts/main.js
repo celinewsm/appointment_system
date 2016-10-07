@@ -1,7 +1,8 @@
 console.log("main.js connected")
 
-document.addEventListener("DOMContentLoaded", function(event) {
-  console.log("DOM fully loaded and parsed");
+$(document).on('turbolinks:load', function() {
+
+  console.log("turbolinks loaded");
 
 
   $('#appoint_speciality').change(function (event) {
@@ -16,10 +17,3 @@ document.addEventListener("DOMContentLoaded", function(event) {
   })
 
 });
-//
-//
-// $("#appoint_speciality").change(updateDoctors())
-//
-// function updateDoctors() {
-//   console.log("changed")
-// }
